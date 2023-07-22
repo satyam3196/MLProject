@@ -19,7 +19,9 @@ class PredictPipeline:
             print("After Loading")
             data_scaled=preprocessor.transform(features)
             preds=model.predict(data_scaled)
-            return preds
+            # Round the predictions to two decimal places
+            preds_rounded = preds.round(2)
+            return preds_rounded
         
         except Exception as e:
             raise CustomException(e,sys)
